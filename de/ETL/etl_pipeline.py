@@ -49,5 +49,5 @@ def main_flow():
 
 if __name__ == "__main__":
     # Execute the flow locally
-    #main_flow()
-    main_flow.serve(name="abc", cron="*/1 * * * *")
+    main_flow()
+    #main_flow.serve(name="abc", cron="*/1 * * * *")
