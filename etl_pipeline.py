@@ -1,5 +1,5 @@
 import pandas as pd
-import sqlite3
+#import sqlite3
 from prefect import task, flow
 from prefect.logging import get_run_logger
 
@@ -27,19 +27,21 @@ def transform_data(df: pd.DataFrame):
 # Task 3: Load and query using SQL
 @task(log_prints=True)
 def load_and_query_sql(df: pd.DataFrame):
-    print("Loading data into SQL database...")
+    logger = get_run_logger()
+    logger.info(df.iloc[0])
+    #print("Loading data into SQL database...")
     # Connect to a local SQLite Database
-    conn = sqlite3.connect("my_data.db")
+    #conn = sqlite3.connect("my_data.db")
     
     # Write Pandas Dataframe to a SQL table
-    df.to_sql("users", conn, if_exists="replace", index=False)
+    #df.to_sql("users", conn, if_exists="replace", index=False)
     
     # Run an automated SQL query
-    result = pd.read_sql("SELECT * FROM users WHERE signup_age > 20", conn)
-    print("SQL Query Result (Users older than 20):")
-    print(result)
+    #result = pd.read_sql("SELECT * FROM users WHERE signup_age > 20", conn)
+    #print("SQL Query Result (Users older than 20):")
+    #print(result)
     
-    conn.close()
+    #conn.close()
 
 # The Orchestrator Flow
 @flow(name="test1", log_prints=True)
