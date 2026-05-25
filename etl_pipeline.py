@@ -1,6 +1,7 @@
 import pandas as pd
 import sqlite3
 from prefect import task, flow
+from prefect.logging import get_run_logger
 
 # Task 1: Mock data extraction
 @task(retries=3, retry_delay_seconds=10)
