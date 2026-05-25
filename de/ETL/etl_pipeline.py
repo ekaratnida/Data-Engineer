@@ -41,7 +41,7 @@ def load_and_query_sql(df: pd.DataFrame):
     conn.close()
 
 # The Orchestrator Flow
-@flow(name="SQL-Pandas-ETL", log_prints=True)
+@flow(name="test1", log_prints=True)
 def main_flow():
     raw_df = extract_data()
     clean_df = transform_data(raw_df)
@@ -50,4 +50,4 @@ def main_flow():
 if __name__ == "__main__":
     # Execute the flow locally
     #main_flow()
-    main_flow.serve(name="daily-etl-deployment", cron="*/1 * * * *")
+    main_flow.serve(name="abc", cron="*/1 * * * *")
